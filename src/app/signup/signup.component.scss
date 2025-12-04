@@ -1,0 +1,210 @@
+
+/* Container */
+.container {
+  max-width: 500px;
+  margin: 5rem auto;
+  padding: 2rem;
+
+  mat-card {
+    background: #1a1a1a !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding: 2.5rem !important;
+  }
+}
+
+/* Card Title */
+mat-card-title {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 0 2rem 0 !important;
+  text-align: center;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 1rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #00d4ff 0%, #0099ff 100%);
+    border-radius: 2px;
+  }
+}
+
+/* Card Content */
+mat-card-content {
+  padding: 0 !important;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 0.875rem 2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%) !important;
+    color: #0a0a0a !important;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3) !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5) !important;
+    }
+
+    &:disabled {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: rgba(255, 255, 255, 0.3) !important;
+      box-shadow: none !important;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Form Fields */
+mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .container {
+  mat-form-field {
+    .mat-form-field-outline {
+      color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .mat-form-field-outline-thick {
+      color: #00d4ff !important;
+    }
+
+    .mat-form-field-label {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    &.mat-focused .mat-form-field-label {
+      color: #00d4ff !important;
+    }
+
+    .mat-input-element {
+      color: #ffffff !important;
+      font-size: 1rem;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    &.mat-focused .mat-form-field-outline {
+      background: rgba(0, 212, 255, 0.05);
+    }
+
+    .mat-error {
+      color: #ef4444 !important;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    button[mat-icon-button] {
+      color: #00d4ff !important;
+
+      &:hover {
+        background: rgba(0, 212, 255, 0.1) !important;
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    margin: 3rem auto;
+    padding: 1rem;
+
+    mat-card {
+      padding: 2rem 1.5rem !important;
+    }
+  }
+
+  mat-card-title {
+    font-size: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  form {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 2rem auto;
+
+    mat-card {
+      padding: 1.5rem 1rem !important;
+    }
+  }
+
+  mat-card-title {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container mat-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+::ng-deep .container {
+  mat-form-field:nth-of-type(1) {
+    animation: fadeIn 0.4s ease-out backwards;
+    animation-delay: 0.1s;
+  }
+
+  mat-form-field:nth-of-type(2) {
+    animation: fadeIn 0.4s ease-out backwards;
+    animation-delay: 0.2s;
+  }
+
+  mat-form-field:nth-of-type(3) {
+    animation: fadeIn 0.4s ease-out backwards;
+    animation-delay: 0.3s;
+  }
+
+  mat-form-field:nth-of-type(4) {
+    animation: fadeIn 0.4s ease-out backwards;
+    animation-delay: 0.4s;
+  }
+}
+
+form button[type="submit"] {
+  animation: fadeIn 0.4s ease-out backwards;
+  animation-delay: 0.5s;
+}

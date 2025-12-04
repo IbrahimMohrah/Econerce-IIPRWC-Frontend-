@@ -1,0 +1,678 @@
+/* Container - Mobile First */
+.faq-form-container {
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Header */
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.header-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.header-icon:hover {
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4);
+}
+
+.header-icon svg {
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+.header-text h2 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Form Card */
+.form-card {
+  border-radius: 20px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+  margin-bottom: 24px;
+  animation: slideUp 0.6s ease-out 0.2s both;
+  overflow: visible !important;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-card mat-card-content {
+  padding: 20px !important;
+}
+
+/* FAQ Form */
+.faq-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Field Wrapper */
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Field Header */
+.field-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 12px;
+  border-left: 4px solid #3b82f6;
+}
+
+.field-header svg {
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.field-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e40af;
+  flex: 1;
+}
+
+.field-badge {
+  padding: 4px 10px;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  border: 1px solid #f87171;
+}
+
+/* Form Fields */
+.form-field {
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.form-field ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.form-field ::ng-deep .mat-form-field-outline {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.form-field ::ng-deep .mat-form-field-outline-start,
+.form-field ::ng-deep .mat-form-field-outline-gap,
+.form-field ::ng-deep .mat-form-field-outline-end {
+  border: 2px solid #e2e8f0 !important;
+  transition: all 0.3s ease;
+}
+
+.form-field:hover ::ng-deep .mat-form-field-outline-start,
+.form-field:hover ::ng-deep .mat-form-field-outline-gap,
+.form-field:hover ::ng-deep .mat-form-field-outline-end {
+  border-color: #3b82f6 !important;
+}
+
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-start,
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-gap,
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-end {
+  border: 2px solid #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.form-field ::ng-deep .mat-form-field-label {
+  color: #64748b !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.form-field ::ng-deep .mat-focused .mat-form-field-label {
+  color: #3b82f6 !important;
+}
+
+.form-field ::ng-deep textarea {
+  font-size: 15px;
+  font-weight: 500;
+  color: #0f172a;
+  padding: 14px 0;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.form-field ::ng-deep textarea::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.form-field ::ng-deep .mat-hint {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Label with Icon */
+.label-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label-with-icon svg {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+/* Input Icons */
+.input-icon {
+  color: #94a3b8 !important;
+  margin-right: 8px;
+}
+
+.textarea-icon {
+  align-self: flex-start;
+  margin-top: 14px;
+}
+
+.form-field ::ng-deep .mat-focused .input-icon {
+  color: #3b82f6 !important;
+}
+
+/* Error Messages */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.error-message svg {
+  flex-shrink: 0;
+}
+
+.form-field ::ng-deep .mat-error {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Preview Card */
+.preview-card {
+  padding: 20px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 16px;
+  border: 2px solid #86efac;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #86efac;
+}
+
+.preview-header svg {
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+.preview-header span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #166534;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.preview-question,
+.preview-answer {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.preview-question svg,
+.preview-answer svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.preview-question svg {
+  color: #3b82f6;
+}
+
+.preview-answer svg {
+  color: #16a34a;
+}
+
+.preview-question span,
+.preview-answer span {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-direction: column;
+}
+
+.cancel-btn,
+.submit-btn {
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px !important;
+  padding: 14px 24px !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  width: 100%;
+}
+
+.cancel-btn {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+  color: #64748b !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.cancel-btn:hover {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.submit-btn svg,
+.cancel-btn svg {
+  flex-shrink: 0;
+}
+
+/* Info Cards */
+.info-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  animation: fadeIn 0.6s ease-out 0.4s both;
+}
+
+.info-card {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.question-icon {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.answer-icon {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.info-icon svg {
+  color: white;
+}
+
+.info-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.info-content p {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
+  .faq-form-container {
+    padding: 32px;
+    max-width: 900px;
+  }
+
+  .header-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .header-text h2 {
+    font-size: 28px;
+  }
+
+  .header-text p {
+    font-size: 14px;
+  }
+
+  .form-card mat-card-content {
+    padding: 32px !important;
+  }
+
+  .form-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .cancel-btn,
+  .submit-btn {
+    width: auto;
+    min-width: 160px;
+  }
+
+  .info-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .field-header h3 {
+    font-size: 16px;
+  }
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 1024px) {
+  .faq-form-container {
+    padding: 40px;
+    max-width: 1000px;
+  }
+
+  .header-text h2 {
+    font-size: 32px;
+  }
+
+  .header-text p {
+    font-size: 15px;
+  }
+
+  .form-card mat-card-content {
+    padding: 40px !important;
+  }
+
+  .form-field ::ng-deep textarea {
+    font-size: 16px;
+  }
+
+  .info-content h4 {
+    font-size: 15px;
+  }
+
+  .info-content p {
+    font-size: 13px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .faq-form-container {
+    background: #0f172a;
+  }
+
+  .header-text h2 {
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-text p {
+    color: #94a3b8;
+  }
+
+  .form-card {
+    background: #1e293b !important;
+  }
+
+  .field-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  }
+
+  .field-header h3 {
+    color: #93c5fd;
+  }
+
+  .form-field ::ng-deep .mat-form-field-outline {
+    background: rgba(30, 41, 59, 0.95);
+  }
+
+  .form-field ::ng-deep .mat-form-field-outline-start,
+  .form-field ::ng-deep .mat-form-field-outline-gap,
+  .form-field ::ng-deep .mat-form-field-outline-end {
+    border-color: #334155 !important;
+  }
+
+  .form-field ::ng-deep textarea {
+    color: #f1f5f9;
+  }
+
+  .preview-card {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+    border-color: #10b981;
+  }
+
+  .preview-header {
+    border-bottom-color: #10b981;
+  }
+
+  .preview-header span {
+    color: #86efac;
+  }
+
+  .preview-question,
+  .preview-answer {
+    background: #1e293b;
+  }
+
+  .preview-question span,
+  .preview-answer span {
+    color: #f1f5f9;
+  }
+
+  .info-card {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .info-content h4 {
+    color: #f1f5f9;
+  }
+
+  .info-content p {
+    color: #94a3b8;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .form-actions,
+  .info-cards {
+    display: none;
+  }
+
+  .form-card {
+    box-shadow: none !important;
+  }
+
+  .preview-card {
+    break-inside: avoid;
+  }
+}
+
+/* Focus Visible */
+.submit-btn:focus-visible,
+.cancel-btn:focus-visible {
+  outline: 3px solid #dbeafe;
+  outline-offset: 2px;
+}
+
+/* Loading State */
+.faq-form.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}

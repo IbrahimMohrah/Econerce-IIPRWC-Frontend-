@@ -1,0 +1,309 @@
+/* Base Navbar */
+.navbar {
+  background: white !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  padding: 0 !important;
+  min-height: 64px !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navbar Content */
+.navbar-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-brand:hover svg {
+  transform: rotate(-10deg);
+}
+
+/* Navbar Links Container - HORIZONTAL SCROLL ON MOBILE */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  padding: 8px 0;
+}
+
+.navbar-links::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Nav Buttons */
+.nav-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  transition: all 0.3s ease !important;
+  color: #64748b !important;
+  text-transform: none !important;
+  height: 40px !important;
+}
+
+.nav-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.nav-btn span {
+  display: none; /* Hide text on mobile */
+}
+
+.nav-btn:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-2px);
+}
+
+.nav-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Public Navbar - Blue */
+.public-navbar {
+  border-bottom: 3px solid #3b82f6;
+}
+
+.public-navbar .navbar-brand svg {
+  color: #3b82f6;
+}
+
+.public-navbar .nav-btn.active {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%) !important;
+  color: #1e40af !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+.public-navbar .nav-btn.active svg {
+  color: #3b82f6;
+}
+
+/* Admin Navbar - Red */
+.admin-navbar {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%) !important;
+  border-bottom: 3px solid #ef4444;
+}
+
+.admin-navbar .navbar-brand {
+  color: #991b1b;
+}
+
+.admin-navbar .navbar-brand svg {
+  color: #ef4444;
+}
+
+.admin-navbar .nav-btn.active {
+  background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%) !important;
+  color: #991b1b !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+}
+
+.admin-navbar .nav-btn.active svg {
+  color: #ef4444;
+}
+
+/* Customer Navbar - Purple */
+.customer-navbar {
+  border-bottom: 3px solid #8b5cf6;
+}
+
+.customer-navbar .navbar-brand svg {
+  color: #8b5cf6;
+}
+
+.customer-navbar .nav-btn.active {
+  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%) !important;
+  color: #6d28d9 !important;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
+}
+
+.customer-navbar .nav-btn.active svg {
+  color: #8b5cf6;
+}
+
+/* Login/Logout Buttons */
+.login-btn,
+.logout-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+.admin-navbar .logout-btn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3) !important;
+}
+
+.admin-navbar .logout-btn:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4) !important;
+}
+
+.customer-navbar .logout-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3) !important;
+}
+
+.customer-navbar .logout-btn:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Tablet - Show Text */
+@media (min-width: 600px) {
+  .nav-btn span {
+    display: inline; /* Show text on tablet+ */
+  }
+
+  .nav-btn {
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+  }
+
+  .navbar-content {
+    padding: 0 24px;
+  }
+
+  .navbar-links {
+    gap: 8px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .navbar-content {
+    padding: 0 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .navbar-brand {
+    font-size: 22px;
+  }
+
+  .navbar-brand svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .nav-btn {
+    padding: 10px 20px !important;
+    font-size: 15px !important;
+  }
+
+  .navbar-links {
+    gap: 12px;
+    overflow: visible; /* No scroll on desktop */
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background: #1e293b !important;
+  }
+
+  .navbar-brand {
+    color: #f1f5f9;
+  }
+
+  .nav-btn {
+    color: #cbd5e1 !important;
+  }
+
+  .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .admin-navbar {
+    background: linear-gradient(135deg, #450a0a 0%, #7f1d1d 100%) !important;
+  }
+}
+
+/* Print */
+@media print {
+  .navbar {
+    display: none;
+  }
+}
+
+/* Focus States */
+.nav-btn:focus-visible {
+  outline: 3px solid #dbeafe;
+  outline-offset: 2px;
+}
+
+/* Active Animation */
+@keyframes activePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.nav-btn.active {
+  animation: activePulse 0.5s ease;
+}

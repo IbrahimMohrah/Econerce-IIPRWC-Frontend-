@@ -1,0 +1,150 @@
+/* Container */
+ng-container {
+  display: block;
+  padding: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Table */
+.mat-elevation-z8 {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  background: #1a1a1a !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+mat-table {
+  width: 100%;
+  background: transparent !important;
+}
+
+/* Header */
+.mat-header-cell {
+  background: rgba(0, 212, 255, 0.05) !important;
+  color: #00d4ff !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1.25rem 1rem !important;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.2) !important;
+}
+
+/* Override inline styles */
+.mat-header-cell[style] {
+  color: #00d4ff !important;
+}
+
+/* Rows */
+.mat-row {
+  background: #1a1a1a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.3s ease;
+}
+
+.mat-row:hover {
+  background: rgba(0, 212, 255, 0.05) !important;
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.1);
+}
+
+/* Cells */
+.mat-cell {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.95rem !important;
+  padding: 1rem !important;
+  border-bottom: none !important;
+}
+
+.mat-cell[style*="font-weight: 600"] {
+  color: #00d4ff !important;
+}
+
+/* Header Row */
+.mat-header-row {
+  background: rgba(0, 212, 255, 0.05) !important;
+}
+
+/* Action Button */
+.mat-cell button[mat-raised-button] {
+  background: rgba(0, 212, 255, 0.1) !important;
+  color: #00d4ff !important;
+  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1.25rem !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mat-cell button[mat-raised-button]:hover {
+  background: rgba(0, 212, 255, 0.2) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3) !important;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  ng-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .mat-header-cell,
+  .mat-cell {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .mat-header-cell {
+    font-size: 0.75rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  ng-container {
+    padding: 1rem;
+  }
+
+  .mat-elevation-z8 {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  mat-table {
+    min-width: 1000px;
+  }
+
+  .mat-header-cell,
+  .mat-cell {
+    padding: 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mat-elevation-z8 {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.mat-row {
+  animation: fadeIn 0.3s ease-out backwards;
+}
+
+.mat-row:nth-child(1) { animation-delay: 0.05s; }
+.mat-row:nth-child(2) { animation-delay: 0.1s; }
+.mat-row:nth-child(3) { animation-delay: 0.15s; }
+.mat-row:nth-child(4) { animation-delay: 0.2s; }
+.mat-row:nth-child(5) { animation-delay: 0.25s; }

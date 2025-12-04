@@ -1,0 +1,774 @@
+/* Import base styles from add-product (we reuse most of the styling) */
+
+/* Container - Mobile First */
+.product-form-container {
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Header - ORANGE for Update */
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.header-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.header-icon:hover {
+  transform: scale(1.05) rotate(-5deg);
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.4);
+}
+
+.header-icon svg {
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+.header-text h2 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Form Card */
+.form-card {
+  border-radius: 20px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+  animation: slideUp 0.6s ease-out 0.2s both;
+  overflow: visible !important;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-card mat-card-content {
+  padding: 20px !important;
+}
+
+/* Product Form */
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Section Headers */
+.upload-header,
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.upload-header svg,
+.section-header svg {
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.upload-header h3,
+.section-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  flex: 1;
+}
+
+/* Upload Badge - Shows status */
+.upload-badge {
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e40af;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  border: 1px solid #60a5fa;
+}
+
+.upload-badge.updated {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #065f46;
+  border-color: #34d399;
+  animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Upload Section - Orange for Update */
+.upload-section {
+  padding: 20px;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-radius: 16px;
+  border: 2px dashed #fbbf24;
+  transition: all 0.3s ease;
+}
+
+.upload-section:hover {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+/* File Upload Container */
+.file-upload-container {
+  width: 100%;
+}
+
+/* Upload Placeholder */
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.upload-placeholder:hover {
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.upload-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+  transition: all 0.3s ease;
+}
+
+.upload-placeholder:hover .upload-icon {
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.4);
+}
+
+.upload-icon svg {
+  color: white;
+}
+
+.upload-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.upload-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.upload-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Image Preview Container */
+.image-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.image-preview {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  animation: scaleIn 0.4s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Existing Image - Blue border */
+.image-preview.existing {
+  border: 3px solid #3b82f6;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+}
+
+.image-preview:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.9) 0%, rgba(217, 119, 6, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.image-preview:hover .image-overlay {
+  opacity: 1;
+}
+
+.change-image-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: white;
+  color: #f59e0b;
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.change-image-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.change-image-btn svg {
+  flex-shrink: 0;
+}
+
+/* Image Info */
+.image-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.image-info svg {
+  flex-shrink: 0;
+}
+
+/* New Upload Info - Orange */
+.image-info.new-upload {
+  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+  border: 1px solid #fb923c;
+  color: #9a3412;
+}
+
+.image-info.new-upload svg {
+  color: #ea580c;
+}
+
+/* Existing File Info - Blue */
+.image-info.existing-file {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 1px solid #60a5fa;
+  color: #1e40af;
+}
+
+.image-info.existing-file svg {
+  color: #3b82f6;
+}
+
+/* Section Divider */
+.section-divider {
+  margin: 24px 0 !important;
+  background: linear-gradient(90deg, transparent, #e2e8f0, transparent) !important;
+}
+
+/* Details Section */
+.details-section {
+  padding: 20px;
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  border-radius: 16px;
+}
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Form Fields (reusing Add Product styles) */
+.form-field {
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.form-field ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.form-field ::ng-deep .mat-form-field-outline {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.form-field ::ng-deep .mat-form-field-outline-start,
+.form-field ::ng-deep .mat-form-field-outline-gap,
+.form-field ::ng-deep .mat-form-field-outline-end {
+  border: 2px solid #e2e8f0 !important;
+  transition: all 0.3s ease;
+}
+
+.form-field:hover ::ng-deep .mat-form-field-outline-start,
+.form-field:hover ::ng-deep .mat-form-field-outline-gap,
+.form-field:hover ::ng-deep .mat-form-field-outline-end {
+  border-color: #f59e0b !important;
+}
+
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-start,
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-gap,
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-end {
+  border: 2px solid #f59e0b !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1) !important;
+}
+
+.form-field ::ng-deep .mat-form-field-label {
+  color: #64748b !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.form-field ::ng-deep .mat-focused .mat-form-field-label {
+  color: #f59e0b !important;
+}
+
+.form-field ::ng-deep input,
+.form-field ::ng-deep textarea {
+  font-size: 15px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.form-field ::ng-deep textarea {
+  padding: 14px 0;
+  line-height: 1.6;
+}
+
+.form-field ::ng-deep input::placeholder,
+.form-field ::ng-deep textarea::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.form-field ::ng-deep .mat-hint {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Label with Icon */
+.label-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label-with-icon svg {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+/* Input Icons */
+.input-icon {
+  color: #94a3b8 !important;
+  margin-right: 8px;
+}
+
+.textarea-icon {
+  align-self: flex-start;
+  margin-top: 14px;
+}
+
+.form-field ::ng-deep .mat-focused .input-icon {
+  color: #f59e0b !important;
+}
+
+/* Suffix Text */
+.suffix-text {
+  font-weight: 700;
+  color: #f59e0b;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+/* Category Option */
+.category-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-option svg {
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+/* Error Messages */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.error-message svg {
+  flex-shrink: 0;
+}
+
+.form-field ::ng-deep .mat-error {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-direction: column;
+}
+
+.cancel-btn,
+.submit-btn {
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px !important;
+  padding: 14px 24px !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  width: 100%;
+}
+
+.cancel-btn {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+  color: #64748b !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.cancel-btn:hover {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.update-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3) !important;
+}
+
+.update-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4) !important;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.submit-btn svg,
+.cancel-btn svg {
+  flex-shrink: 0;
+}
+
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
+  .product-form-container {
+    padding: 32px;
+    max-width: 900px;
+  }
+
+  .header-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .header-text h2 {
+    font-size: 28px;
+  }
+
+  .header-text p {
+    font-size: 14px;
+  }
+
+  .form-card mat-card-content {
+    padding: 32px !important;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .cancel-btn,
+  .submit-btn {
+    width: auto;
+    min-width: 160px;
+  }
+
+  .upload-section,
+  .details-section {
+    padding: 24px;
+  }
+
+  .image-preview {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 1024px) {
+  .product-form-container {
+    padding: 40px;
+    max-width: 1000px;
+  }
+
+  .header-text h2 {
+    font-size: 32px;
+  }
+
+  .header-text p {
+    font-size: 15px;
+  }
+
+  .form-card mat-card-content {
+    padding: 40px !important;
+  }
+
+  .upload-section,
+  .details-section {
+    padding: 32px;
+  }
+
+  .image-preview {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .product-form-container {
+    background: #0f172a;
+  }
+
+  .header-text h2 {
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-text p {
+    color: #94a3b8;
+  }
+
+  .form-card {
+    background: #1e293b !important;
+  }
+
+  .upload-section {
+    background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+    border-color: #f59e0b;
+  }
+
+  .details-section {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  }
+
+  .upload-header h3,
+  .section-header h3 {
+    color: #f1f5f9;
+  }
+
+  .upload-title {
+    color: #f1f5f9;
+  }
+
+  .upload-subtitle {
+    color: #94a3b8;
+  }
+
+  .form-field ::ng-deep .mat-form-field-outline {
+    background: rgba(30, 41, 59, 0.95);
+  }
+
+  .form-field ::ng-deep .mat-form-field-outline-start,
+  .form-field ::ng-deep .mat-form-field-outline-gap,
+  .form-field ::ng-deep .mat-form-field-outline-end {
+    border-color: #334155 !important;
+  }
+
+  .form-field ::ng-deep input,
+  .form-field ::ng-deep textarea {
+    color: #f1f5f9;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .form-actions,
+  .image-overlay {
+    display: none;
+  }
+
+  .form-card {
+    box-shadow: none !important;
+  }
+}
+
+/* Focus Visible */
+.submit-btn:focus-visible,
+.cancel-btn:focus-visible,
+.change-image-btn:focus-visible {
+  outline: 3px solid #fef3c7;
+  outline-offset: 2px;
+}
+
+/* Loading State */
+.product-form.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}

@@ -1,0 +1,244 @@
+<div class="product-form-container">
+    <div class="form-header">
+        <div class="header-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+            </svg>
+        </div>
+        <div class="header-text">
+            <h2>Update Product</h2>
+            <p>Edit product details and update information</p>
+        </div>
+    </div>
+
+    <mat-card class="form-card">
+        <mat-card-content>
+            <form [formGroup]="productForm" (ngSubmit)="updateProduct()" class="product-form">
+
+                <!-- Image Upload Section -->
+                <div class="upload-section">
+                    <div class="upload-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <h3>Product Image</h3>
+                        <span class="upload-badge" *ngIf="existingImage && !selectedFile">Current</span>
+                        <span class="upload-badge updated" *ngIf="selectedFile">Updated</span>
+                    </div>
+
+                    <div class="file-upload-container">
+                        <input type="file" #fileInput (change)="onFileSelected($event)" hidden>
+                        
+                        <!-- Show Selected File (New Upload) -->
+                        <div *ngIf="selectedFile" class="image-preview-container">
+                            <div class="image-preview">
+                                <img [src]="imagePreview" alt="New Product Image" class="preview-image">
+                                <div class="image-overlay">
+                                    <button type="button" class="change-image-btn" (click)="fileInput.click()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                                        </svg>
+                                        Change Image
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="image-info new-upload">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                                <span>New image: {{ selectedFile.name }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Show Existing Image (No New Upload) -->
+                        <div *ngIf="existingImage && !selectedFile" class="image-preview-container">
+                            <div class="image-preview existing">
+                                <img [src]="existingImage" alt="Current Product Image" class="preview-image">
+                                <div class="image-overlay">
+                                    <button type="button" class="change-image-btn" (click)="fileInput.click()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                                        </svg>
+                                        Update Image
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="image-info existing-file">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Current product image</span>
+                            </div>
+                        </div>
+
+                        <!-- No Image (Upload Placeholder) -->
+                        <div *ngIf="!selectedFile && !existingImage" class="upload-placeholder" (click)="fileInput.click()">
+                            <div class="upload-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                            </div>
+                            <div class="upload-text">
+                                <span class="upload-title">Click to upload product image</span>
+                                <span class="upload-subtitle">PNG, JPG up to 10MB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <mat-divider class="section-divider"></mat-divider>
+
+                <!-- Product Details Section -->
+                <div class="details-section">
+                    <div class="section-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        <h3>Product Details</h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <mat-form-field appearance="outline" class="form-field full-width">
+                            <mat-label>
+                                <span class="label-with-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                    </svg>
+                                    Category
+                                </span>
+                            </mat-label>
+                            <mat-select formControlName="categoryId" name="categoryId">
+                                <mat-option *ngFor="let category of listOfCategories" [value]="category.id">
+                                    <div class="category-option">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                                            <line x1="7" y1="7" x2="7.01" y2="7"/>
+                                        </svg>
+                                        {{category.name}}
+                                    </div>
+                                </mat-option>
+                            </mat-select>
+                            <mat-icon matPrefix class="input-icon">category</mat-icon>
+                            <mat-error *ngIf="productForm.get('categoryId')?.hasError('required')">
+                                <span class="error-message">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="8" x2="12" y2="12"/>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                    </svg>
+                                    Please select a category
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="form-field">
+                            <mat-label>
+                                <span class="label-with-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                                        <line x1="7" y1="7" x2="7.01" y2="7"/>
+                                    </svg>
+                                    Product Name
+                                </span>
+                            </mat-label>
+                            <input matInput type="text" placeholder="e.g. Wireless Headphones" formControlName="name" />
+                            <mat-icon matPrefix class="input-icon">label</mat-icon>
+                            <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+                                <span class="error-message">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="8" x2="12" y2="12"/>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                    </svg>
+                                    Product name is required
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="form-field">
+                            <mat-label>
+                                <span class="label-with-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="1" x2="12" y2="23"/>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                    Price
+                                </span>
+                            </mat-label>
+                            <input matInput type="number" placeholder="0.00" formControlName="price" min="0" step="0.01" />
+                            <mat-icon matPrefix class="input-icon">attach_money</mat-icon>
+                            <span matSuffix class="suffix-text">USD</span>
+                            <mat-hint>Enter price in dollars</mat-hint>
+                            <mat-error *ngIf="productForm.get('price')?.hasError('required')">
+                                <span class="error-message">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="8" x2="12" y2="12"/>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                    </svg>
+                                    Price is required
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="form-field full-width">
+                            <mat-label>
+                                <span class="label-with-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                        <line x1="16" y1="13" x2="8" y2="13"/>
+                                        <line x1="16" y1="17" x2="8" y2="17"/>
+                                    </svg>
+                                    Description
+                                </span>
+                            </mat-label>
+                            <textarea matInput placeholder="Enter detailed product description..." formControlName="description" rows="4"></textarea>
+                            <mat-icon matPrefix class="input-icon textarea-icon">description</mat-icon>
+                            <mat-hint>Provide a detailed description of the product</mat-hint>
+                            <mat-error *ngIf="productForm.get('description')?.hasError('required')">
+                                <span class="error-message">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="8" x2="12" y2="12"/>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                    </svg>
+                                    Description is required
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button mat-raised-button type="button" class="cancel-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                        Cancel
+                    </button>
+                    <button mat-raised-button type="submit" class="submit-btn update-btn" [disabled]="productForm.invalid">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                        </svg>
+                        Update Product
+                    </button>
+                </div>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

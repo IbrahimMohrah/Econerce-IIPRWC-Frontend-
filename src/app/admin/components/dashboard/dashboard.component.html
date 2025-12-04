@@ -1,0 +1,123 @@
+<div class="products-container">
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-header">
+            <div class="search-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+            </div>
+            <div class="search-text">
+                <h2>Search Products</h2>
+                <p>Find products by name, category, or keyword</p>
+            </div>
+        </div>
+
+        <form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
+            <div class="search-wrapper">
+                <mat-form-field appearance="outline" class="search-input">
+                    <input matInput formControlName="title" placeholder="Search for products...">
+                </mat-form-field>
+                
+                <button mat-fab type="submit" [disabled]="searchProductForm.invalid" class="search-button" aria-label="Search">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="product-list">
+        <mat-card class="product-card" *ngFor="let product of products; let i = index" [style.animation-delay.s]="i * 0.1">
+            <div class="product-image-container">
+                <div class="product-image">
+                    <img [src]="product.processedImg" [alt]="product.name">
+                    <div class="image-overlay">
+                        <button mat-mini-fab color="primary" class="quick-view-btn">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    Premium
+                </div>
+            </div>
+
+            <div class="product-details">
+                <div class="product-header">
+                    <h2 class="product-name">{{ product.name }}</h2>
+                    <div class="product-price-tag">
+                        <span class="currency">$</span>
+                        <span class="price">{{ product.price }}</span>
+                    </div>
+                </div>
+
+                <p class="product-description">{{ product.description }}</p>
+
+                <mat-divider class="divider"></mat-divider>
+
+                <div class="product-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Price</span>
+                            <span class="info-value price-value">${{ product.price }}</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Category</span>
+                            <span class="info-value category-badge">{{ product.categoryName }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <mat-divider class="divider"></mat-divider>
+
+                <div class="actions">
+                    <button mat-raised-button class="action-btn faq-btn" [routerLink]="'/admin/faq/' + product.id">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        FAQ
+                    </button>
+
+                    <button mat-raised-button class="action-btn update-btn" [routerLink]="'/admin/product/' + product.id">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                        </svg>
+                        Update
+                    </button>
+
+                    <button mat-raised-button class="action-btn delete-btn" (click)="deleteProduct(product.id)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6"/>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            <line x1="10" y1="11" x2="10" y2="17"/>
+                            <line x1="14" y1="11" x2="14" y2="17"/>
+                        </svg>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
