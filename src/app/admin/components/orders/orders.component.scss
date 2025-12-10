@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 
-/* Page Header */
+/* Page Header - RED FOR ADMIN */
 .page-header {
   margin-bottom: 24px;
 }
@@ -20,11 +20,11 @@
   width: 56px;
   height: 56px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
   flex-shrink: 0;
 }
 
@@ -70,16 +70,16 @@ mat-card-content {
   background: white;
 }
 
-/* Headers */
+/* Headers - RED THEME */
 .orders-table th {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%) !important;
   padding: 16px 12px !important;
   font-weight: 700 !important;
   font-size: 12px !important;
-  color: #475569 !important;
+  color: #991b1b !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 2px solid #e2e8f0 !important;
+  border-bottom: 2px solid #fca5a5 !important;
 }
 
 .header-with-icon {
@@ -89,7 +89,7 @@ mat-card-content {
 }
 
 .header-with-icon svg {
-  color: #64748b;
+  color: #ef4444;
   flex-shrink: 0;
 }
 
@@ -101,29 +101,29 @@ mat-card-content {
   border-bottom: 1px solid #f1f5f9 !important;
 }
 
-/* Table Rows */
+/* Table Rows - RED HOVER */
 .orders-table tr:hover {
-  background: linear-gradient(90deg, #eff6ff 0%, #dbeafe 100%) !important;
+  background: linear-gradient(90deg, #fef2f2 0%, #fee2e2 100%) !important;
 }
 
-/* Tracking Badge */
+/* Tracking Badge - RED */
 .tracking-badge {
   display: inline-block;
   font-family: 'Monaco', 'Courier New', monospace;
   font-weight: 700;
-  color: #3b82f6;
+  color: #dc2626;
   font-size: 13px;
   padding: 6px 10px;
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
   border-radius: 6px;
-  border: 1px solid #93c5fd;
+  border: 1px solid #fca5a5;
   max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* User Cell */
+/* User Cell - Keep Purple for visual contrast */
 .user-cell {
   display: flex;
   align-items: center;
@@ -144,7 +144,7 @@ mat-card-content {
   flex-shrink: 0;
 }
 
-/* Amount Badge */
+/* Amount Badge - Keep Green for money */
 .amount-badge {
   display: inline-block;
   padding: 6px 12px;
@@ -156,7 +156,7 @@ mat-card-content {
   font-family: 'Monaco', 'Courier New', monospace;
 }
 
-/* Status Badge */
+/* Status Badge - Keep different colors for status indicators */
 .status-badge {
   display: inline-block;
   padding: 6px 12px;
@@ -185,20 +185,20 @@ mat-card-content {
   border: 1px solid #34d399;
 }
 
-/* Action Button */
+/* Action Button - RED */
 .action-btn {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
   color: white !important;
   border-radius: 8px !important;
   font-weight: 700 !important;
   font-size: 12px !important;
   text-transform: uppercase;
   padding: 8px 16px !important;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
 }
 
 .action-btn:hover {
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4) !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4) !important;
 }
 
 /* Menu Items */
@@ -213,7 +213,7 @@ mat-card-content {
   flex-shrink: 0;
 }
 
-/* Scrollbar */
+/* Scrollbar - RED */
 .table-wrapper::-webkit-scrollbar {
   height: 8px;
 }
@@ -224,12 +224,12 @@ mat-card-content {
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #fca5a5;
   border-radius: 4px;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #ef4444;
 }
 
 /* RESPONSIVE BREAKPOINTS */
@@ -325,9 +325,9 @@ mat-card-content {
   }
 
   .orders-table th {
-    background: linear-gradient(135deg, #334155 0%, #1e293b 100%) !important;
-    border-bottom-color: #334155 !important;
-    color: #cbd5e1 !important;
+    background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%) !important;
+    border-bottom-color: #dc2626 !important;
+    color: #fca5a5 !important;
   }
 
   .orders-table td {

@@ -17,7 +17,7 @@
   }
 }
 
-/* Form Header */
+/* Form Header - RED FOR ADMIN */
 .form-header {
   display: flex;
   align-items: center;
@@ -41,11 +41,11 @@
   width: 56px;
   height: 56px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -70,7 +70,7 @@
 
 .header-icon:hover {
   transform: scale(1.05) rotate(-5deg);
-  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 32px rgba(239, 68, 68, 0.4);
 }
 
 .header-icon svg {
@@ -130,7 +130,7 @@
   gap: 24px;
 }
 
-/* Section Headers */
+/* Section Headers - RED THEME */
 .upload-header,
 .section-header {
   display: flex;
@@ -141,7 +141,7 @@
 
 .upload-header svg,
 .section-header svg {
-  color: #8b5cf6;
+  color: #ef4444;
   flex-shrink: 0;
 }
 
@@ -153,18 +153,18 @@
   color: #0f172a;
 }
 
-/* Upload Section */
+/* Upload Section - RED THEME */
 .upload-section {
   padding: 20px;
-  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
   border-radius: 16px;
-  border: 2px dashed #c4b5fd;
+  border: 2px dashed #fca5a5;
   transition: all 0.3s ease;
 }
 
 .upload-section:hover {
-  border-color: #8b5cf6;
-  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+  border-color: #ef4444;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
 }
 
 /* File Upload Container */
@@ -185,25 +185,25 @@
 }
 
 .upload-placeholder:hover {
-  background: rgba(139, 92, 246, 0.05);
+  background: rgba(239, 68, 68, 0.05);
 }
 
 .upload-icon {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
-  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
   transition: all 0.3s ease;
 }
 
 .upload-placeholder:hover .upload-icon {
   transform: scale(1.1);
-  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 32px rgba(239, 68, 68, 0.4);
 }
 
 .upload-icon svg {
@@ -276,7 +276,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.9) 0%, rgba(124, 58, 237, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.9) 0%, rgba(220, 38, 38, 0.9) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -292,7 +292,7 @@
   padding: 10px 20px;
   border-radius: 8px;
   background: white;
-  color: #8b5cf6;
+  color: #ef4444;
   font-weight: 700;
   font-size: 13px;
   border: none;
@@ -355,7 +355,7 @@
   grid-column: 1 / -1;
 }
 
-/* Form Fields */
+/* Form Fields - RED THEME */
 .form-field {
   width: 100%;
   transition: all 0.3s ease;
@@ -381,14 +381,14 @@
 .form-field:hover ::ng-deep .mat-form-field-outline-start,
 .form-field:hover ::ng-deep .mat-form-field-outline-gap,
 .form-field:hover ::ng-deep .mat-form-field-outline-end {
-  border-color: #8b5cf6 !important;
+  border-color: #ef4444 !important;
 }
 
 .form-field ::ng-deep .mat-focused .mat-form-field-outline-start,
 .form-field ::ng-deep .mat-focused .mat-form-field-outline-gap,
 .form-field ::ng-deep .mat-focused .mat-form-field-outline-end {
-  border: 2px solid #8b5cf6 !important;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+  border: 2px solid #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
 }
 
 .form-field ::ng-deep .mat-form-field-label {
@@ -398,7 +398,7 @@
 }
 
 .form-field ::ng-deep .mat-focused .mat-form-field-label {
-  color: #8b5cf6 !important;
+  color: #ef4444 !important;
 }
 
 .form-field ::ng-deep input,
@@ -449,18 +449,18 @@
 }
 
 .form-field ::ng-deep .mat-focused .input-icon {
-  color: #8b5cf6 !important;
+  color: #ef4444 !important;
 }
 
-/* Suffix Text */
+/* Suffix Text - RED */
 .suffix-text {
   font-weight: 700;
-  color: #8b5cf6;
+  color: #ef4444;
   font-size: 14px;
   margin-left: 8px;
 }
 
-/* Category Option */
+/* Category Option - RED */
 .category-option {
   display: flex;
   align-items: center;
@@ -468,7 +468,7 @@
 }
 
 .category-option svg {
-  color: #8b5cf6;
+  color: #ef4444;
   flex-shrink: 0;
 }
 
@@ -534,14 +534,14 @@
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
   color: white !important;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
 }
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4) !important;
 }
 
 .submit-btn:disabled {
@@ -657,8 +657,8 @@
   }
 
   .upload-section {
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-    border-color: #6366f1;
+    background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+    border-color: #dc2626;
   }
 
   .details-section {
@@ -710,7 +710,7 @@
 .submit-btn:focus-visible,
 .cancel-btn:focus-visible,
 .change-image-btn:focus-visible {
-  outline: 3px solid #ddd6fe;
+  outline: 3px solid #fecaca;
   outline-offset: 2px;
 }
 

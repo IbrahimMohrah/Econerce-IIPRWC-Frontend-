@@ -17,7 +17,7 @@
   }
 }
 
-/* Form Header */
+/* Form Header - RED FOR ADMIN */
 .form-header {
   display: flex;
   align-items: center;
@@ -41,11 +41,11 @@
   width: 56px;
   height: 56px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -70,7 +70,7 @@
 
 .header-icon:hover {
   transform: scale(1.05) rotate(5deg);
-  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 12px 32px rgba(239, 68, 68, 0.4);
 }
 
 .header-icon svg {
@@ -139,7 +139,7 @@
   width: 100%;
 }
 
-/* Form Fields */
+/* Form Fields - RED THEME */
 .form-field {
   width: 100%;
   transition: all 0.3s ease;
@@ -165,14 +165,14 @@
 .form-field:hover ::ng-deep .mat-form-field-outline-start,
 .form-field:hover ::ng-deep .mat-form-field-outline-gap,
 .form-field:hover ::ng-deep .mat-form-field-outline-end {
-  border-color: #f59e0b !important;
+  border-color: #ef4444 !important;
 }
 
 .form-field ::ng-deep .mat-focused .mat-form-field-outline-start,
 .form-field ::ng-deep .mat-focused .mat-form-field-outline-gap,
 .form-field ::ng-deep .mat-focused .mat-form-field-outline-end {
-  border: 2px solid #f59e0b !important;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1) !important;
+  border: 2px solid #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
 }
 
 .form-field ::ng-deep .mat-form-field-label {
@@ -182,7 +182,7 @@
 }
 
 .form-field ::ng-deep .mat-focused .mat-form-field-label {
-  color: #f59e0b !important;
+  color: #ef4444 !important;
 }
 
 .form-field ::ng-deep input {
@@ -222,13 +222,13 @@
 }
 
 .form-field ::ng-deep .mat-focused .input-icon {
-  color: #f59e0b !important;
+  color: #ef4444 !important;
 }
 
-/* Suffix Text */
+/* Suffix Text - RED */
 .suffix-text {
   font-weight: 700;
-  color: #f59e0b;
+  color: #ef4444;
   font-size: 16px;
   margin-left: 8px;
 }
@@ -256,13 +256,13 @@
   75% { transform: translateX(5px); }
 }
 
-/* Datepicker Toggle */
+/* Datepicker Toggle - RED */
 .form-field ::ng-deep .mat-datepicker-toggle {
-  color: #f59e0b !important;
+  color: #ef4444 !important;
 }
 
 .form-field ::ng-deep .mat-datepicker-toggle:hover {
-  background: rgba(245, 158, 11, 0.1) !important;
+  background: rgba(239, 68, 68, 0.1) !important;
 }
 
 /* Form Actions */
@@ -304,14 +304,14 @@
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
   color: white !important;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
 }
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4) !important;
 }
 
 .submit-btn:disabled {
@@ -325,7 +325,7 @@
   flex-shrink: 0;
 }
 
-/* Info Cards */
+/* Info Cards - RED THEME */
 .info-cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -337,27 +337,27 @@
   display: flex;
   gap: 16px;
   padding: 16px;
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
   border-radius: 12px;
-  border: 2px solid #fbbf24;
+  border: 2px solid #fca5a5;
   transition: all 0.3s ease;
 }
 
 .info-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(251, 191, 36, 0.2);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2);
 }
 
 .info-icon {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 .info-icon svg {
@@ -368,13 +368,13 @@
   margin: 0 0 4px 0;
   font-size: 14px;
   font-weight: 700;
-  color: #92400e;
+  color: #991b1b;
 }
 
 .info-content p {
   margin: 0;
   font-size: 12px;
-  color: #78350f;
+  color: #7f1d1d;
   line-height: 1.5;
 }
 
@@ -490,16 +490,16 @@
   }
 
   .info-card {
-    background: linear-gradient(135deg, #422006 0%, #78350f 100%);
-    border-color: #92400e;
+    background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+    border-color: #dc2626;
   }
 
   .info-content h4 {
-    color: #fbbf24;
+    color: #fca5a5;
   }
 
   .info-content p {
-    color: #fcd34d;
+    color: #fecaca;
   }
 }
 
@@ -518,7 +518,7 @@
 /* Focus Visible */
 .submit-btn:focus-visible,
 .cancel-btn:focus-visible {
-  outline: 3px solid #fef3c7;
+  outline: 3px solid #fecaca;
   outline-offset: 2px;
 }
 
