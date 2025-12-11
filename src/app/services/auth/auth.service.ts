@@ -4,7 +4,7 @@ import { Observable, map } from 'rxjs';
 import { UserStorageService } from '../stoarge/user-storage.service';
 
 // get  environment variable Basic URL
-const BASIC_URL = "http://localhost:8080/";
+const BASIC_URL = "https://ecomerce-backend-iprwc.up.railway.app/";
 
 
 const AUTH_HEADER = 'authorization';
