@@ -10,7 +10,7 @@ import { ViewProductDetailComponent } from './components/view-product-detail/vie
 import { ViewWishlistComponent } from './components/view-wishlist/view-wishlist.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'products', component: DashboardComponent },
   { path: 'cart', component: CartComponent },
   { path: 'my_orders', component: MyOrdersComponent },
   { path: 'ordered_products/:orderId', component: ViewOrderedProductsComponent },

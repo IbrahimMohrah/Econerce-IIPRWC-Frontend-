@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from '../../services/stoarge/user-storage.service';
 
-const BASIC_URL = "https://ecomerce-backend-iprwc.up.railway.app/";
+const BASIC_URL = "http://localhost:8080/";
 
 
 @Injectable({
@@ -52,6 +52,13 @@ export class CustomerService {
       userId: UserStorageService.getUserId()
     }
     return this.http.post(BASIC_URL + `api/customer/deduction`, cartDto , {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  removeItemFromCart(productId:any): Observable<any>{
+    const userId = UserStorageService.getUserId();
+    return this.http.delete(BASIC_URL + `api/customer/cart/${userId}/product/${productId}`, {
       headers: this.createAuthorizationHeader(),
     })
   }

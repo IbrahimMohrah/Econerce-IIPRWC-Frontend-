@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { UserStorageService } from '../stoarge/user-storage.service';
 
-const BASIC_URL = "https://ecomerce-backend-iprwc.up.railway.app/";
+// get  environment variable Basic URL
+const BASIC_URL = "http://localhost:8080/";
+
 
 const AUTH_HEADER = 'authorization';
 

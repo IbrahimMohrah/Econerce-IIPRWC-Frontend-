@@ -7,7 +7,13 @@ export const routes: Routes = [
      { path : "login", component: LoginComponent},
   { path : "signup", component: SignupComponent},
   { path : "order", component: TrackOrderComponent},
+  { path : "products", redirectTo: 'customer/products', pathMatch: 'full'},
     { path: 'customer', loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule) },
-   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
+   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+   // empty path redirects to customer module
+   {
+      path: '',
+      loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
+   }
 
 ];

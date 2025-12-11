@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
 import { PlaceOrderComponent } from '../place-order/place-order.component';
 import { SharedModule } from '../../../shared/shared.module';
+import { UserStorageService } from '../../../services/stoarge/user-storage.service';
+import { CartStorageService } from '../../../services/cart-storage.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,18 +19,22 @@ import { SharedModule } from '../../../shared/shared.module';
 export class CartComponent {
   cartItems: any[] = [];
   order: any;
+  isLoggedIn: boolean = false;
 
   couponForm!: FormGroup;
 
   constructor(private customerService: CustomerService,
     private snackbar: MatSnackBar,
     private fb: FormBuilder,
-    public dialog: MatDialog,){}
+    public dialog: MatDialog,
+    private cartStorageService: CartStorageService,
+    private router: Router){}
 
     ngOnInit(): void {
       this.couponForm = this.fb.group({
         code: [null, [Validators.required]]
       })
+      this.isLoggedIn = UserStorageService.isCustomerLoggedIn();
       this.getCart();
     }
 
@@ -47,30 +54,79 @@ export class CartComponent {
 
     getCart(){
       this.cartItems = [];
-      this.customerService.getCartByUserId().subscribe(res =>{
-        this.order = res;
-        res.cartItems.forEach(element => {
-          element.processedImg = 'data:image/jpeg;base64,' + element.returnedImg;
-          this.cartItems.push(element);
+      
+      if(this.isLoggedIn) {
+        // Get cart from backend for logged-in users
+        this.customerService.getCartByUserId().subscribe(res =>{
+          this.order = res;
+          res.cartItems.forEach(element => {
+            element.processedImg = 'data:image/jpeg;base64,' + element.returnedImg;
+            this.cartItems.push(element);
+          });
+        })
+      } else {
+        // Get cart from localStorage for guest users
+        const localCart = this.cartStorageService.getCart();
+        localCart.forEach(item => {
+          if(item.byteImg) {
+            item.processedImg = 'data:image/jpeg;base64,' + item.byteImg;
+          }
+          this.cartItems.push(item);
         });
-      })
+        
+        // Calculate order details for guest users
+        this.order = {
+          totalAmount: this.cartStorageService.getTotalAmount(),
+          amount: this.cartStorageService.getTotalAmount(),
+          couponName: null
+        };
+      }
     }
 
     increaseQuantity(productId: any){
-      this.customerService.increaseProductQuantity(productId).subscribe(res =>{
+      if(this.isLoggedIn) {
+        this.customerService.increaseProductQuantity(productId).subscribe(res =>{
+          this.snackbar.open('Product quantity increased.', 'Close', { duration: 5000 });
+          this.getCart();
+        })
+      } else {
+        this.cartStorageService.increaseQuantity(productId);
         this.snackbar.open('Product quantity increased.', 'Close', { duration: 5000 });
         this.getCart();
-      })
+      }
     }
 
-    decreaseQuantity(productId: any){
-      this.customerService.decreaseProductQuantity(productId).subscribe(res =>{
-        this.snackbar.open('Product quantity decreased.', 'Close', { duration: 5000 });
+    decreaseQuantity(productId: any, currentQuantity: number){
+      if(this.isLoggedIn) {
+        if(currentQuantity === 1) {
+          this.customerService.removeItemFromCart(productId).subscribe(res =>{
+            this.snackbar.open('Product removed from cart.', 'Close', { duration: 5000 });
+            this.getCart();
+          })
+        } else {
+          this.customerService.decreaseProductQuantity(productId).subscribe(res =>{
+            this.snackbar.open('Product quantity decreased.', 'Close', { duration: 5000 });
+            this.getCart();
+          })
+        }
+      } else {
+        if(currentQuantity === 1) {
+          this.cartStorageService.removeItem(productId);
+          this.snackbar.open('Product removed from cart.', 'Close', { duration: 5000 });
+        } else {
+          this.cartStorageService.decreaseQuantity(productId);
+          this.snackbar.open('Product quantity decreased.', 'Close', { duration: 5000 });
+        }
         this.getCart();
-      })
+      }
     }
 
     placeOrder(){
+      if(!this.isLoggedIn) {
+        this.snackbar.open('Please login to place an order', 'Close', { duration: 5000 });
+        this.router.navigateByUrl('/login');
+        return;
+      }
       this.dialog.open(PlaceOrderComponent);
     }
 

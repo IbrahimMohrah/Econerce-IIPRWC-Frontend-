@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../services/customer.service';
 import { SharedModule } from '../../../shared/shared.module';
+import { UserStorageService } from '../../../services/stoarge/user-storage.service';
+import { CartStorageService } from '../../../services/cart-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +16,15 @@ import { SharedModule } from '../../../shared/shared.module';
 export class DashboardComponent {
   products: any[] = [];
   searchProductForm!: FormGroup;
+  isLoggedIn: boolean = false;
 
   constructor(private customerService: CustomerService,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar,){}
+    private snackBar: MatSnackBar,
+    private cartStorageService: CartStorageService){}
 
   ngOnInit(){
+    this.isLoggedIn = UserStorageService.isCustomerLoggedIn();
     this.getAllProducts();
     this.searchProductForm = this.fb.group({
       title: [null, [Validators.required]]
@@ -50,8 +55,18 @@ export class DashboardComponent {
   }
 
   addToCart(id:any){
-    this.customerService.addToCart(id).subscribe(res =>{
-      this.snackBar.open("Product added to cart successfully", "Close", { duration: 5000 })
-    })
+    if(this.isLoggedIn) {
+      // Add to backend cart for logged-in users
+      this.customerService.addToCart(id).subscribe(res =>{
+        this.snackBar.open("Product added to cart successfully", "Close", { duration: 5000 })
+      })
+    } else {
+      // Add to localStorage cart for guest users
+      const product = this.products.find(p => p.id === id);
+      if(product) {
+        this.cartStorageService.addToCart(product);
+        this.snackBar.open("Product added to cart successfully", "Close", { duration: 5000 })
+      }
+    }
   }
 }
