@@ -1,0 +1,771 @@
+/* Products Container */
+.products-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 32px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Search Section */
+.search-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: slideDown 0.7s ease-out;
+}
+
+.search-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.search-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.search-icon-wrapper:hover {
+  transform: scale(1.05) rotate(-5deg);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.search-icon-wrapper svg {
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.search-text h2 {
+  margin: 0 0 6px 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.search-text p {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Search Form */
+.search-form {
+  position: relative;
+  z-index: 1;
+}
+
+/* Search Wrapper - NIEUW: button staat NAAST input */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+/* Search Input Field */
+.search-input {
+  flex: 1;
+  position: relative;
+}
+
+/* Verwijder Material padding en marges */
+.search-input ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.search-input ::ng-deep .mat-form-field-flex {
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+.search-input ::ng-deep .mat-form-field-infix {
+  padding: 22px 24px !important;
+  border: none !important;
+  width: 100% !important;
+}
+
+/* Verberg de label */
+.search-input ::ng-deep .mat-form-field-label-wrapper {
+  display: none !important;
+}
+
+/* Moderne witte achtergrond met glassmorphism */
+.search-input ::ng-deep .mat-form-field-outline {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2) inset !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-input ::ng-deep .mat-form-field-outline-start,
+.search-input ::ng-deep .mat-form-field-outline-gap,
+.search-input ::ng-deep .mat-form-field-outline-end {
+  border: 2px solid rgba(102, 126, 234, 0.2) !important;
+  transition: all 0.3s ease;
+}
+
+/* Hover state */
+.search-wrapper:hover .search-input ::ng-deep .mat-form-field-outline {
+  background: white !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.3) inset !important;
+  transform: translateY(-2px);
+}
+
+.search-wrapper:hover .search-input ::ng-deep .mat-form-field-outline-start,
+.search-wrapper:hover .search-input ::ng-deep .mat-form-field-outline-gap,
+.search-wrapper:hover .search-input ::ng-deep .mat-form-field-outline-end {
+  border-color: rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Focus state - mooie glow effect */
+.search-input ::ng-deep .mat-focused .mat-form-field-outline {
+  background: white !important;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3), 0 0 0 3px rgba(102, 126, 234, 0.3) !important;
+  transform: translateY(-3px);
+  animation: searchGlow 2s ease-in-out infinite;
+}
+
+.search-input ::ng-deep .mat-focused .mat-form-field-outline-start,
+.search-input ::ng-deep .mat-focused .mat-form-field-outline-gap,
+.search-input ::ng-deep .mat-focused .mat-form-field-outline-end {
+  border: 2px solid #667eea !important;
+}
+
+/* Input text styling */
+.search-input ::ng-deep input {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  letter-spacing: -0.01em;
+  caret-color: #667eea !important;
+  height: auto !important;
+  line-height: 1.5 !important;
+}
+
+/* Placeholder styling */
+.search-input ::ng-deep input::placeholder {
+  color: #94a3b8 !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  opacity: 1 !important;
+}
+
+/* Search Button - STANDALONE FAB BUTTON */
+.search-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4) !important;
+  border: none !important;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Shimmer effect op button */
+.search-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.search-button:hover:not([disabled])::before {
+  left: 100%;
+}
+
+.search-button:hover:not([disabled]) {
+  transform: scale(1.08) translateY(-2px) !important;
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5) !important;
+}
+
+.search-button:active:not([disabled]) {
+  transform: scale(0.98) !important;
+}
+
+.search-button[disabled] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Mat-icon binnen de button */
+.search-button ::ng-deep .mat-icon {
+  color: white !important;
+  font-size: 28px !important;
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+}
+
+/* Verberg Material ripple op disabled */
+.search-button[disabled] ::ng-deep .mat-ripple {
+  display: none;
+}
+
+/* Animatie voor focus glow */
+@keyframes searchGlow {
+  0% {
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3), 0 0 0 3px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4), 0 0 0 3px rgba(102, 126, 234, 0.5);
+  }
+  100% {
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3), 0 0 0 3px rgba(102, 126, 234, 0.3);
+  }
+}
+
+/* Product List Grid */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 32px;
+  animation: slideUp 0.7s ease-out 0.2s both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Product Card */
+.product-card {
+  border-radius: 20px !important;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  animation: fadeInCard 0.6s ease-out both;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Product Image Container */
+.product-image-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.product-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.quick-view-btn {
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .quick-view-btn {
+  transform: scale(1);
+}
+
+.quick-view-btn ::ng-deep .mat-icon {
+  color: white;
+}
+
+/* Product Badge */
+.product-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+  z-index: 2;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.product-badge svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* Product Details */
+.product-details {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.product-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.product-price-tag {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.currency {
+  font-size: 14px;
+}
+
+.price {
+  font-size: 20px;
+}
+
+.product-description {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.divider {
+  margin: 16px 0 !important;
+  background-color: #f1f5f9 !important;
+}
+
+/* Product Info */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  transform: translateX(4px);
+}
+
+.info-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.info-icon svg {
+  color: #667eea;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.info-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.price-value {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.category-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Actions */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.action-btn {
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 12px !important;
+  padding: 0 16px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.action-btn svg {
+  flex-shrink: 0;
+}
+
+.faq-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  grid-column: 1 / -1;
+}
+
+.faq-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+.update-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  color: white !important;
+}
+
+.update-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4) !important;
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4) !important;
+}
+
+.action-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .product-list {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-container {
+    padding: 20px;
+  }
+
+  .search-section {
+    padding: 24px;
+    margin-bottom: 28px;
+    border-radius: 20px;
+  }
+
+  .search-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .search-icon-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+
+  .search-text h2 {
+    font-size: 26px;
+  }
+
+  .search-wrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-button {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 56px !important;
+  }
+
+  .product-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .product-image {
+    height: 240px;
+  }
+
+  .product-name {
+    font-size: 20px;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-btn {
+    grid-column: 1;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .products-container {
+    background: #0f172a;
+  }
+
+  .product-card {
+    background: #1e293b !important;
+  }
+
+  .product-name {
+    color: #f1f5f9;
+  }
+
+  .product-description {
+    color: #94a3b8;
+  }
+
+  .divider {
+    background-color: #334155 !important;
+  }
+
+  .info-item {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  }
+
+  .info-item:hover {
+    background: linear-gradient(135deg, #475569 0%, #334155 100%);
+  }
+
+  .info-icon {
+    background: #334155;
+  }
+
+  .info-label {
+    color: #94a3b8;
+  }
+
+  .info-value {
+    color: #f1f5f9;
+  }
+}
+
+/* Loading State */
+.product-card.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Empty State */
+.product-list:empty::after {
+  content: 'No products found';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+  color: #94a3b8;
+  font-size: 18px;
+  font-weight: 600;
+  grid-column: 1 / -1;
+}
+
+/* Print Styles */
+@media print {
+  .search-section,
+  .actions {
+    display: none;
+  }
+
+  .product-card {
+    break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  .product-card:hover {
+    transform: none;
+  }
+}

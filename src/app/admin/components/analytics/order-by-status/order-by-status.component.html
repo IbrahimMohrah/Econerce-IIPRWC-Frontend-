@@ -1,0 +1,52 @@
+<div class="order-status-container">
+    <mat-card class="order-status-card order-placed">
+        <mat-card-header>
+            <div mat-card-avatar class="status-avatar status-placed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+            </div>
+            <mat-card-title>Placed</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="status-value">{{data.placed}}</div>
+            <div class="status-label">Orders</div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="order-status-card order-shipped">
+        <mat-card-header>
+            <div mat-card-avatar class="status-avatar status-shipped">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                    <path d="M15 18H9"/>
+                    <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+                    <circle cx="17" cy="18" r="2"/>
+                    <circle cx="7" cy="18" r="2"/>
+                </svg>
+            </div>
+            <mat-card-title>Shipped</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="status-value">{{data.shipped}}</div>
+            <div class="status-label">Orders</div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="order-status-card order-delivered">
+        <mat-card-header>
+            <div mat-card-avatar class="status-avatar status-delivered">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"/>
+                </svg>
+            </div>
+            <mat-card-title>Delivered</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="status-value">{{data.delivered}}</div>
+            <div class="status-label">Orders</div>
+        </mat-card-content>
+    </mat-card>
+</div>

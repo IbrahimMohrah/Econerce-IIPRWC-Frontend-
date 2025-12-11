@@ -1,0 +1,172 @@
+<div class="faq-form-container">
+    <div class="form-header">
+        <div class="header-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+        </div>
+        <div class="header-text">
+            <h2>Post FAQ</h2>
+            <p>Add frequently asked questions to help customers</p>
+        </div>
+    </div>
+
+    <mat-card class="form-card">
+        <mat-card-content>
+            <form [formGroup]="FAQForm" (ngSubmit)="postFAQ()" class="faq-form">
+
+                <!-- Question Field -->
+                <div class="field-wrapper">
+                    <div class="field-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <h3>Question</h3>
+                        <span class="field-badge">Required</span>
+                    </div>
+                    
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>
+                            <span class="label-with-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                                Enter your question
+                            </span>
+                        </mat-label>
+                        <textarea matInput placeholder="e.g. What is your return policy?" formControlName="question" rows="3"></textarea>
+                        <mat-icon matPrefix class="input-icon textarea-icon">help_outline</mat-icon>
+                        <mat-hint>Write a clear and concise question</mat-hint>
+                        <mat-error *ngIf="FAQForm.get('question')?.hasError('required')">
+                            <span class="error-message">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                                Question is required
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Answer Field -->
+                <div class="field-wrapper">
+                    <div class="field-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 11 12 14 22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                        </svg>
+                        <h3>Answer</h3>
+                        <span class="field-badge">Required</span>
+                    </div>
+                    
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>
+                            <span class="label-with-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                                Provide detailed answer
+                            </span>
+                        </mat-label>
+                        <textarea matInput placeholder="e.g. You can return items within 30 days of purchase..." formControlName="answer" rows="5"></textarea>
+                        <mat-icon matPrefix class="input-icon textarea-icon">chat_bubble_outline</mat-icon>
+                        <mat-hint>Provide a comprehensive and helpful answer</mat-hint>
+                        <mat-error *ngIf="FAQForm.get('answer')?.hasError('required')">
+                            <span class="error-message">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                                Answer is required
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Preview Card -->
+                <div class="preview-card" *ngIf="FAQForm.get('question')?.value || FAQForm.get('answer')?.value">
+                    <div class="preview-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <span>Preview</span>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-question" *ngIf="FAQForm.get('question')?.value">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                            <span>{{ FAQForm.get('question')?.value }}</span>
+                        </div>
+                        <div class="preview-answer" *ngIf="FAQForm.get('answer')?.value">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 11 12 14 22 4"/>
+                            </svg>
+                            <span>{{ FAQForm.get('answer')?.value }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button mat-raised-button type="button" class="cancel-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                        Cancel
+                    </button>
+                    <button mat-raised-button type="submit" class="submit-btn" [disabled]="FAQForm.invalid">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        Post FAQ
+                    </button>
+                </div>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Info Cards -->
+    <div class="info-cards">
+        <div class="info-card">
+            <div class="info-icon question-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+            </div>
+            <div class="info-content">
+                <h4>Good Questions</h4>
+                <p>Keep questions clear, specific, and commonly asked by customers</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <div class="info-icon answer-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </div>
+            <div class="info-content">
+                <h4>Helpful Answers</h4>
+                <p>Provide detailed, accurate answers that fully address the question</p>
+            </div>
+        </div>
+    </div>
+</div>
