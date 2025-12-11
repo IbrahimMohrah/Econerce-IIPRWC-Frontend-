@@ -1,219 +1,418 @@
+/* Place Order Form - Purple Glassmorphism */
+
 /* Container */
-.container {
+.place-order-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f7ff 0%, #f0edff 100%);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Order Card */
+.order-card {
+  width: 100%;
   max-width: 600px;
-  margin: 3rem auto;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 
+    0 12px 40px rgba(139, 92, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Card */
-.container mat-card {
-  background: #1a1a1a !important;
-  border-radius: 16px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  padding: 2.5rem !important;
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
-/* Card Title */
-mat-card-title {
-  font-size: 1.75rem !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  margin: 0 0 2rem 0 !important;
+/* Header */
+.order-header {
+  padding: 40px 32px 32px;
   text-align: center;
-  letter-spacing: -0.5px;
-  position: relative;
-  padding-bottom: 1rem;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(124, 58, 237, 0.05));
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
 }
 
-mat-card-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #00d4ff 0%, #0099ff 100%);
-  border-radius: 2px;
+.header-icon {
+  font-size: 64px !important;
+  width: 64px !important;
+  height: 64px !important;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  animation: float 3s ease-in-out infinite;
 }
 
-/* Card Content */
-mat-card-content {
-  padding: 0 !important;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.order-title {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.order-subtitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #64748b;
 }
 
 /* Form */
-form {
+.order-form {
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 28px;
 }
 
-/* Form Fields */
-mat-form-field {
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Field Label */
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.label-icon {
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  color: #8b5cf6 !important;
+}
+
+.required {
+  color: #ef4444;
+  font-weight: 800;
+}
+
+.optional {
+  font-size: 12px;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-left: 4px;
+}
+
+/* Form Field */
+.form-field {
   width: 100%;
 }
 
-::ng-deep mat-form-field .mat-form-field-outline {
-  color: rgba(255, 255, 255, 0.1) !important;
+.form-field ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
 }
 
-::ng-deep mat-form-field .mat-form-field-outline-thick {
-  color: #00d4ff !important;
+.form-field ::ng-deep .mat-form-field-outline {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 14px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-::ng-deep mat-form-field .mat-form-field-label {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-::ng-deep mat-form-field.mat-focused .mat-form-field-label {
-  color: #00d4ff !important;
-}
-
-::ng-deep mat-form-field .mat-input-element {
-  color: #ffffff !important;
-  font-size: 1rem;
-}
-
-::ng-deep mat-form-field .mat-form-field-appearance-outline .mat-form-field-outline {
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
+.form-field ::ng-deep .mat-form-field-outline-start,
+.form-field ::ng-deep .mat-form-field-outline-gap,
+.form-field ::ng-deep .mat-form-field-outline-end {
+  border: 2px solid rgba(139, 92, 246, 0.2) !important;
   transition: all 0.3s ease;
 }
 
-::ng-deep mat-form-field.mat-focused .mat-form-field-outline {
-  background: rgba(0, 212, 255, 0.05);
+.form-field:hover ::ng-deep .mat-form-field-outline-start,
+.form-field:hover ::ng-deep .mat-form-field-outline-gap,
+.form-field:hover ::ng-deep .mat-form-field-outline-end {
+  border-color: rgba(139, 92, 246, 0.4) !important;
 }
 
-::ng-deep mat-form-field .mat-error {
-  color: #ef4444 !important;
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-start,
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-gap,
+.form-field ::ng-deep .mat-focused .mat-form-field-outline-end {
+  border: 2px solid #8b5cf6 !important;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1) !important;
 }
 
-/* Button Row */
-.button-row {
+.form-field ::ng-deep input,
+.form-field ::ng-deep textarea {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e293b;
+  padding: 14px 0;
+}
+
+.form-field ::ng-deep input::placeholder,
+.form-field ::ng-deep textarea::placeholder {
+  color: #94a3b8;
+}
+
+.form-field ::ng-deep textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Field Icon (suffix) */
+.field-icon {
+  color: #8b5cf6 !important;
+  font-size: 22px !important;
+  width: 22px !important;
+  height: 22px !important;
+}
+
+/* Error Message */
+.form-field ::ng-deep .mat-error {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* Button Group */
+.button-group {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 /* Order Button */
 .order-button {
   flex: 1;
-  padding: 0.875rem 2rem !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  border-radius: 12px !important;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%) !important;
-  color: #0a0a0a !important;
-  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3) !important;
-  transition: all 0.3s ease !important;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  color: white !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.08em;
+  padding: 16px 32px !important;
+  border-radius: 12px !important;
+  box-shadow: 
+    0 6px 20px rgba(139, 92, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.order-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.order-button:hover:not(:disabled)::before {
+  transform: translateX(100%);
 }
 
 .order-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5) !important;
+  box-shadow: 
+    0 10px 30px rgba(139, 92, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
 .order-button:disabled {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: rgba(255, 255, 255, 0.3) !important;
-  box-shadow: none !important;
+  opacity: 0.5;
   cursor: not-allowed;
+  transform: none !important;
+}
+
+.order-button mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 /* Close Button */
 .close-button {
   flex: 1;
-  padding: 0.875rem 2rem !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  border-radius: 12px !important;
-  background: rgba(239, 68, 68, 0.1) !important;
+  background: white !important;
   color: #ef4444 !important;
-  border: 1px solid rgba(239, 68, 68, 0.3) !important;
-  transition: all 0.3s ease !important;
+  border: 2px solid #fecaca !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.08em;
+  padding: 16px 32px !important;
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .close-button:hover {
-  background: rgba(239, 68, 68, 0.2) !important;
+  background: #fef2f2 !important;
+  border-color: #ef4444 !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2) !important;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    margin: 2rem 1rem;
-    padding: 1rem;
+.close-button mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .place-order-container {
+    padding: 40px;
   }
 
-  .container mat-card {
-    padding: 2rem 1.5rem !important;
+  .order-header {
+    padding: 48px 40px 40px;
   }
 
-  mat-card-title {
-    font-size: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
+  .header-icon {
+    font-size: 72px !important;
+    width: 72px !important;
+    height: 72px !important;
   }
 
-  form {
-    gap: 1.25rem;
+  .order-title {
+    font-size: 32px;
   }
 
-  .button-row {
-    flex-direction: column;
+  .order-subtitle {
+    font-size: 16px;
   }
 
-  .order-button,
+  .order-form {
+    padding: 40px;
+    gap: 32px;
+  }
+
+  .field-label {
+    font-size: 15px;
+  }
+
+  .form-field ::ng-deep input,
+  .form-field ::ng-deep textarea {
+    font-size: 16px;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .place-order-container {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  }
+
+  .order-card {
+    background: rgba(30, 27, 75, 0.8);
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .order-header {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(124, 58, 237, 0.15));
+    border-bottom-color: rgba(139, 92, 246, 0.2);
+  }
+
+  .order-subtitle {
+    color: #94a3b8;
+  }
+
+  .field-label {
+    color: #f1f5f9;
+  }
+
+  .form-field ::ng-deep .mat-form-field-outline {
+    background: rgba(30, 27, 75, 0.9) !important;
+  }
+
+  .form-field ::ng-deep input,
+  .form-field ::ng-deep textarea {
+    color: #f1f5f9;
+  }
+
   .close-button {
-    width: 100%;
+    background: rgba(30, 27, 75, 0.9) !important;
+  }
+
+  .close-button:hover {
+    background: rgba(254, 242, 242, 0.1) !important;
   }
 }
 
-@media (max-width: 480px) {
-  .container mat-card {
-    padding: 1.5rem 1rem !important;
-  }
-
-  mat-card-title {
-    font-size: 1.35rem !important;
-  }
+/* Focus States */
+button:focus-visible {
+  outline: 3px solid rgba(139, 92, 246, 0.4);
+  outline-offset: 3px;
 }
 
-/* Animation */
-@keyframes fadeIn {
+/* Animation for Dialog */
+@keyframes dialogEnter {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: scale(0.8) translateY(50px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
 }
 
-.container mat-card {
-  animation: fadeIn 0.5s ease-out;
+/* If used in MatDialog */
+::ng-deep .mat-dialog-container {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 24px !important;
+  overflow: visible !important;
 }
 
-::ng-deep mat-form-field:nth-of-type(1) {
-  animation: fadeIn 0.4s ease-out backwards;
-  animation-delay: 0.1s;
-}
-
-::ng-deep mat-form-field:nth-of-type(2) {
-  animation: fadeIn 0.4s ease-out backwards;
-  animation-delay: 0.2s;
-}
-
-.button-row {
-  animation: fadeIn 0.4s ease-out backwards;
-  animation-delay: 0.3s;
+::ng-deep .mat-dialog-container .place-order-container {
+  padding: 0;
+  min-height: auto;
+  background: transparent;
 }

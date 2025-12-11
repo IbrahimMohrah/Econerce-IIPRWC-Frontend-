@@ -1,34 +1,85 @@
-<div class="ordered-product-container">
-    <div class="ordered-product" *ngFor="let product of orderedProductDetailsList">
-        <div class="product-info">
-            <div class="product-image">
-                <img [src]="product.processedImg" alt="product-image" />
-            </div>
-            <div class="product-details">
-                <div class="item-row">
-                    <div class="item-name">
-                        {{ product.name }}
-                    </div>
-                    <div class="item-price">
-                        Price: {{ product.productPrice | currency }}
-                    </div>
-                    <div class="item-quantity">
-                        Quantity: {{ product.quantity }}
-                    </div>
+<div class="ordered-products-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <mat-icon class="header-icon">inventory_2</mat-icon>
+        <h1 class="page-title">Order Details</h1>
+        <p class="page-subtitle">Review your ordered products</p>
+    </div>
+
+    <!-- Products List -->
+    <div class="products-list">
+        <div class="product-card" *ngFor="let product of orderedProductDetailsList; let i = index">
+            <!-- Product Content -->
+            <div class="product-content">
+                <!-- Product Image -->
+                <div class="product-image-wrapper">
+                    <img [src]="product.processedImg" 
+                         alt="{{ product.name }}" 
+                         class="product-image">
                 </div>
 
+                <!-- Product Details -->
+                <div class="product-details">
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <mat-icon class="meta-icon">payments</mat-icon>
+                            <div class="meta-content">
+                                <span class="meta-label">Price</span>
+                                <span class="meta-value">{{ product.productPrice | currency }}</span>
+                            </div>
+                        </div>
+
+                        <div class="meta-item">
+                            <mat-icon class="meta-icon">shopping_basket</mat-icon>
+                            <div class="meta-content">
+                                <span class="meta-label">Quantity</span>
+                                <span class="meta-value">{{ product.quantity }}</span>
+                            </div>
+                        </div>
+
+                        <div class="meta-item subtotal">
+                            <mat-icon class="meta-icon">calculate</mat-icon>
+                            <div class="meta-content">
+                                <span class="meta-label">Subtotal</span>
+                                <span class="meta-value">{{ product.productPrice * product.quantity | currency }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="action-buttons">
-                <button mat-raised-button color="primary" routerLink="/customer/review/{{product.id}}">Give
-                    Review</button>
+            <!-- Review Button -->
+            <div class="product-footer">
+                <button mat-raised-button 
+                        color="primary" 
+                        class="review-button"
+                        routerLink="/customer/review/{{product.id}}">
+                    <mat-icon>rate_review</mat-icon>
+                    <span>Write a Review</span>
+                </button>
             </div>
-
         </div>
-       
-    </div>
-    <div class="total-price">
-        Total: {{ totalAmount | currency }}
     </div>
 
+    <!-- Order Total -->
+    <div class="order-total-card">
+        <div class="total-content">
+            <div class="total-icon">
+                <mat-icon>receipt_long</mat-icon>
+            </div>
+            <div class="total-details">
+                <span class="total-label">Order Total</span>
+                <span class="total-amount">{{ totalAmount | currency }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="!orderedProductDetailsList || orderedProductDetailsList.length === 0">
+        <mat-icon class="empty-icon">shopping_cart</mat-icon>
+        <h2>No products in this order</h2>
+        <p>This order doesn't contain any products</p>
+    </div>
 </div>

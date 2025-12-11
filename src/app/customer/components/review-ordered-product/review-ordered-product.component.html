@@ -1,41 +1,112 @@
-<form [formGroup]="reviewForm" class="review-form">
-
-    <div class="file-upload-container">
-        <label class="file-upload-label">
-            <span>Select a File</span>
-            <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
-            <mat-icon>attach_file</mat-icon>
-        </label>
-
-        <div *ngIf="selectedFile" class="image-preview">
-            <div class="circle-image">
-                <img [src]="imagePreview" alt="Selected Image" class="preview-image">
-            </div>
+<div class="review-container">
+    <div class="review-card">
+        <!-- Header -->
+        <div class="review-header">
+            <mat-icon class="header-icon">rate_review</mat-icon>
+            <h1 class="review-title">Write a Review</h1>
+            <p class="review-subtitle">Share your experience with this product</p>
         </div>
+
+        <!-- Form -->
+        <form [formGroup]="reviewForm" class="review-form">
+            
+            <!-- Image Upload Section -->
+            <div class="upload-section">
+                <label class="section-label">
+                    <mat-icon class="label-icon">add_photo_alternate</mat-icon>
+                    <span>Product Photo</span>
+                    <span class="optional">(Optional)</span>
+                </label>
+                
+                <div class="upload-area">
+                    <label for="fileInput" class="upload-button">
+                        <mat-icon class="upload-icon">cloud_upload</mat-icon>
+                        <span class="upload-text">Click to upload image</span>
+                        <span class="upload-hint">PNG, JPG up to 5MB</span>
+                    </label>
+                    <input type="file" 
+                           id="fileInput" 
+                           (change)="onFileSelected($event)" 
+                           accept="image/*"
+                           hidden>
+                    
+                    <!-- Image Preview -->
+                    <div *ngIf="selectedFile" class="image-preview">
+                        <div class="preview-wrapper">
+                            <img [src]="imagePreview" alt="Preview" class="preview-image">
+                            <button type="button" 
+                                    class="remove-image" 
+                                    (click)="removeImage()">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rating Section -->
+            <div class="form-group">
+                <label class="section-label">
+                    <mat-icon class="label-icon">star</mat-icon>
+                    <span>Your Rating</span>
+                    <span class="required">*</span>
+                </label>
+                
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-select formControlName="rating" placeholder="Select rating">
+                        <mat-option value="1">
+                            <span class="rating-option">⭐ Poor</span>
+                        </mat-option>
+                        <mat-option value="2">
+                            <span class="rating-option">⭐⭐ Fair</span>
+                        </mat-option>
+                        <mat-option value="3">
+                            <span class="rating-option">⭐⭐⭐ Good</span>
+                        </mat-option>
+                        <mat-option value="4">
+                            <span class="rating-option">⭐⭐⭐⭐ Very Good</span>
+                        </mat-option>
+                        <mat-option value="5">
+                            <span class="rating-option">⭐⭐⭐⭐⭐ Excellent</span>
+                        </mat-option>
+                    </mat-select>
+                    <mat-icon matSuffix class="field-icon">arrow_drop_down</mat-icon>
+                    <mat-error *ngIf="reviewForm.get('rating').invalid && reviewForm.get('rating').touched">
+                        Please select a rating
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- Description Section -->
+            <div class="form-group">
+                <label class="section-label">
+                    <mat-icon class="label-icon">edit_note</mat-icon>
+                    <span>Your Review</span>
+                    <span class="required">*</span>
+                </label>
+                
+                <mat-form-field appearance="outline" class="form-field">
+                    <textarea matInput 
+                              formControlName="description" 
+                              placeholder="Tell us about your experience with this product..."
+                              rows="5"></textarea>
+                    <mat-icon matSuffix class="field-icon">description</mat-icon>
+                    <mat-error *ngIf="reviewForm.get('description').invalid && reviewForm.get('description').touched">
+                        Review description is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- Submit Button -->
+            <button mat-raised-button 
+                    color="primary" 
+                    type="submit" 
+                    class="submit-button"
+                    [disabled]="reviewForm.invalid"
+                    (click)="submitForm()">
+                <mat-icon>send</mat-icon>
+                <span>Submit Review</span>
+            </button>
+        </form>
     </div>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Rating</mat-label>
-        <mat-select formControlName="rating">
-            <mat-option value="1">1 Star</mat-option>
-            <mat-option value="2">2 Stars</mat-option>
-            <mat-option value="3">3 Stars</mat-option>
-            <mat-option value="4">4 Stars</mat-option>
-            <mat-option value="5">5 Stars</mat-option>
-        </mat-select>
-        <mat-error *ngIf="reviewForm.get('rating').invalid && reviewForm.get('rating').touched">
-            Please select a rating!
-        </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description" placeholder="Description" rows="5"></textarea>
-        <mat-error *ngIf="reviewForm.get('description').invalid && reviewForm.get('description').touched">
-            This input is required!
-        </mat-error>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit" (click)="submitForm()">Submit</button>
-
-</form>
+</div>

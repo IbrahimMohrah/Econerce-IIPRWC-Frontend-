@@ -1,35 +1,68 @@
-<div class="container">
-    <mat-card>
-        <mat-card-title>Place Order</mat-card-title>
-        <mat-card-content>
-            <form [formGroup]="orderForm">
+<div class="place-order-container">
+    <div class="order-card">
+        <!-- Header -->
+        <div class="order-header">
+            <mat-icon class="header-icon">local_shipping</mat-icon>
+            <h1 class="order-title">Place Your Order</h1>
+            <p class="order-subtitle">Complete your delivery details</p>
+        </div>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Address</mat-label>
-                    <input matInput formControlName="address" placeholder="Address" required>
+        <!-- Form -->
+        <form [formGroup]="orderForm" class="order-form">
+            <!-- Address Field -->
+            <div class="form-group">
+                <label class="field-label">
+                    <mat-icon class="label-icon">location_on</mat-icon>
+                    <span>Delivery Address</span>
+                    <span class="required">*</span>
+                </label>
+                <mat-form-field appearance="outline" class="form-field">
+                    <input matInput 
+                           formControlName="address" 
+                           placeholder="Enter your delivery address">
+                    <mat-icon matSuffix class="field-icon">home</mat-icon>
                     <mat-error *ngIf="orderForm.get('address').invalid && orderForm.get('address').touched">
-                        This Input Is Required!
+                        Address is required
                     </mat-error>
                 </mat-form-field>
+            </div>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Description</mat-label>
-                    <input matInput formControlName="orderDescription" placeholder="Description">
+            <!-- Description Field -->
+            <div class="form-group">
+                <label class="field-label">
+                    <mat-icon class="label-icon">description</mat-icon>
+                    <span>Order Notes</span>
+                    <span class="optional">(Optional)</span>
+                </label>
+                <mat-form-field appearance="outline" class="form-field">
+                    <textarea matInput 
+                              formControlName="orderDescription" 
+                              placeholder="Any special instructions?"
+                              rows="3"></textarea>
+                    <mat-icon matSuffix class="field-icon">edit_note</mat-icon>
                 </mat-form-field>
+            </div>
 
-                <div class="button-row">
-
-                    <button mat-raised-button color="primary" type="submit" [disabled]="orderForm.invalid"
-                        (click)="placeOrder()" class="order-button">Order</button>
-                    <button mat-stroked-button color="warn" class="close-button" (click)="closeForm()" class="close-button">
-                        Close
-                    </button>
-
-                </div>
-            </form>
-
-        </mat-card-content>
-
-
-    </mat-card>
+            <!-- Buttons -->
+            <div class="button-group">
+                <button mat-raised-button 
+                        color="primary" 
+                        type="submit" 
+                        class="order-button"
+                        [disabled]="orderForm.invalid"
+                        (click)="placeOrder()">
+                    <mat-icon>shopping_bag</mat-icon>
+                    <span>Place Order</span>
+                </button>
+                
+                <button mat-stroked-button 
+                        color="warn" 
+                        class="close-button" 
+                        (click)="closeForm()">
+                    <mat-icon>close</mat-icon>
+                    <span>Cancel</span>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
