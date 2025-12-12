@@ -43,9 +43,9 @@ export class LoginComponent {
     this.authService.login(username,password).subscribe(
       (res) =>{
         if (UserStorageService.isAdminLoggedIn()){
-          this.router.navigateByUrl('admin/dashboard');
+          this.router.navigateByUrl('admin/products');
         }else if(UserStorageService.isCustomerLoggedIn()){
-          this.router.navigateByUrl('customer/dashboard');
+          this.router.navigateByUrl('customer/products');
         }
       },
       (error) =>{

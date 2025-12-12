@@ -13,7 +13,7 @@ import { UpdateProductComponent } from './components/update-product/update-produ
 
 export const routes: Routes = [
 
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'products', component: DashboardComponent },
   { path: 'category', component: PostCategoryComponent },
   { path: 'product', component: PostProductComponent },
   { path: 'product/:productId', component: UpdateProductComponent },

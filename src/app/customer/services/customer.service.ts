@@ -55,6 +55,13 @@ export class CustomerService {
       headers: this.createAuthorizationHeader(),
     })
   }
+
+  removeItemFromCart(productId:any): Observable<any>{
+    const userId = UserStorageService.getUserId();
+    return this.http.delete(BASIC_URL + `api/customer/cart/${userId}/product/${productId}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
   
   getCartByUserId(): Observable<any>{
     const userId = UserStorageService.getUserId()
